@@ -41,6 +41,9 @@ spring:
           destination: test
           contentType: application/json
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
       - id: cs
         uri: lb://coffee-service:8088
