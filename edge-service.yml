@@ -46,13 +46,13 @@ spring:
           enabled: true
       routes:
       - id: cs
-        uri: lb://coffee-service:8088
+        uri: lb://coffee-service
         predicates:
         - Path=/cs/**
         filters:
         - RewritePath=/cs/, /
       - id: coffee
-        uri: lb://coffee-service:8088
+        uri: lb://coffee-service
         predicates:
         - Path=/coffee
         filters:
