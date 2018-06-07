@@ -30,9 +30,7 @@ spring:
 
 eureka:
   instance:
-    instance-id: testing12345
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    # instance-id: ${spring.application.name}:${random.int}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 security:
   oauth2:
