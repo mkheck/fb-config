@@ -28,6 +28,10 @@ spring:
     sender:
       type: web
 
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.int}
+
 security:
   oauth2:
     resource:
