@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8088}
+  port: ${PORT:0}
   context-path: /
 
 management:
@@ -30,7 +30,9 @@ spring:
 
 eureka:
   instance:
-    instanceId: ${spring.application.name}:${random.int}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instance-id: testing123
+    # instance-id: ${spring.application.name}:${random.int}
 
 security:
   oauth2:
