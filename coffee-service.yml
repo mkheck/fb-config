@@ -29,9 +29,9 @@ spring:
     sender:
       type: web
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+# eureka:
+#   instance:
+#     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 security:
   oauth2:
