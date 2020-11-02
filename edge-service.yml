@@ -1,12 +1,5 @@
 server:
   port: ${PORT:8086}
-  # ssl:
-  #   key-store: ${HOME}/dev/keystore.p12
-  #   key-store-password: starbucks
-  #   keyStoreType: PKCS12
-  #   keyAlias: tomcat
-  # port: ${PORT:8443}
-  # context-path: /edge
 
 management:
   endpoints:
@@ -16,14 +9,11 @@ management:
 
 zuul:
   routes:
-    coffee-service:
-      path: /cs/**
+    aircraft-service:
+      path: /ac/**
     demo:
-      path: /coffee/**
-      url: forward:/coffeerama
-    # user:
-    #   path: /user/**
-    #   url: http://localhost:9999/uaa/user
+      path: /aircraft/**
+      url: forward:/upintheair
     # wx:
     #   path: /weather/**
     #   url: forward:http://api.openweathermap.org/data/2.5/find
@@ -46,21 +36,21 @@ spring:
           enabled: true
       routes:
       - id: cs
-        uri: lb://coffee-service
+        uri: lb://aircraft-service
         predicates:
-        - Path=/cs/**
+        - Path=/ac/**
         filters:
-        - RewritePath=/cs/, /
+        - RewritePath=/ac/, /
       - id: coffee
-        uri: lb://coffee-service
+        uri: lb://aircraft-service
         predicates:
-        - Path=/coffee
+        - Path=/aircraft
         filters:
         - name: Hystrix
           args:
             name: fallbackcmd
-            fallbackUri: forward:/houseblend
-        - RewritePath=/coffee, /coffees/random
+            fallbackUri: forward:/favorite
+        - RewritePath=/aircraft, /aircraft/random
 
   zipkin:
     host: localhost
@@ -69,17 +59,5 @@ spring:
     sender:
       type: web
 
-# security:
-#   user:
-#     password: starbucks
-#   oauth2:
-#     client:
-#       accessTokenUri: http://localhost:9999/uaa/oauth/token
-#       userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
-#       clientId: demo
-#       clientSecret: demosecret
-#     resource:
-#       userInfoUri: http://localhost:9999/uaa/user
-
 # Misc
-coffee: "DC Universe Darkest Blend"
+aircraft: "PA28"
