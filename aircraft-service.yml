@@ -16,6 +16,9 @@ spring:
     host: localhost
     port: 6379
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
     stream:
       bindings:
         input:
