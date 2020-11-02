@@ -7,17 +7,6 @@ management:
       exposure:
         include: "*"
 
-zuul:
-  routes:
-    aircraft-service:
-      path: /ac/**
-    demo:
-      path: /aircraft/**
-      url: forward:/upintheair
-    # wx:
-    #   path: /weather/**
-    #   url: forward:http://api.openweathermap.org/data/2.5/find
-
 spring:
   rabbitmq:
     host: localhost
@@ -35,22 +24,22 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: cs
+      - id: ac
         uri: lb://aircraft-service
         predicates:
         - Path=/ac/**
         filters:
         - RewritePath=/ac/, /
-      - id: coffee
+      - id: aircraft
         uri: lb://aircraft-service
         predicates:
         - Path=/aircraft
         filters:
-        - name: Hystrix
+        - name: Resilience4j
           args:
             name: fallbackcmd
             fallbackUri: forward:/favorite
-        - RewritePath=/aircraft, /aircraft/random
+        - RewritePath=/aircraft, /aircraft/favorite
 
   zipkin:
     host: localhost
