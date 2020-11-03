@@ -28,19 +28,19 @@ server:
             enabled: true
         routes:
         - id: edge
-            uri: lb://edge-service
+            uri: http://edge-service
             predicates:
             - Path=/edge/**
             filters:
             - RewritePath=/edge/, /
         - id: ac
-            uri: lb://aircraft-service
+            uri: http://aircraft-service
             predicates:
             - Path=/ac/**
             filters:
             - RewritePath=/ac/, /
         - id: aircraft
-            uri: lb://aircraft-service
+            uri: http://aircraft-service
             predicates:
             - Path=/aircraft
             filters:
