@@ -1,42 +1,41 @@
 server:
   port: ${PORT:8080}
   
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
   
-  spring:
-    rabbitmq:
-      host: localhost
-    redis:
-      host: localhost
-      port: 6379
-    cloud:
-      loadbalancer:
-        ribbon:
-          enabled: false
-      stream:
-        bindings:
-          output:
-            destination: test
-            contentType: application/json
-      gateway:
-        discovery:
-          locator:
-            enabled: true
-        routes:
-        - id: edge
-          uri: http://http://192.168.1.121:8086/
-          predicates:
-          - Path=/edge/**
-        - id: ac
-          uri: http://aircraft-service/
-          predicates:
-          - Path=/ac/**
-        - id: aircraft
-          uri: http://aircraft-service/
-          predicates:
-          - Path=/aircraft/**
-  
+spring:
+  rabbitmq:
+    host: localhost
+  redis:
+    host: localhost
+    port: 6379
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    stream:
+      bindings:
+        output:
+          destination: test
+          contentType: application/json
+    gateway:
+      discovery:
+        locator:
+        enabled: true
+      routes:
+      - id: edge
+        uri: http://http://192.168.1.121:8086/
+        predicates:
+        - Path=/edge/**
+      - id: ac
+        uri: http://aircraft-service/
+        predicates:
+        - Path=/ac/**
+      - id: aircraft
+        uri: http://aircraft-service/
+        predicates:
+        - Path=/aircraft/**
