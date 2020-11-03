@@ -22,28 +22,7 @@ spring:
         output:
           destination: test
           contentType: application/json
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-      - id: ac
-        uri: lb://aircraft-service
-        predicates:
-        - Path=/ac/**
-        filters:
-        - RewritePath=/ac/, /
-      - id: aircraft
-        uri: lb://aircraft-service
-        predicates:
-        - Path=/aircraft
-        filters:
-        - name: Resilience4j
-          args:
-            name: fallbackcmd
-            fallbackUri: forward:/favorite
-        - RewritePath=/aircraft, /aircraft/favorite
-
+          
   zipkin:
     host: localhost
     port: 9411
