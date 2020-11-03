@@ -28,15 +28,15 @@ server:
             enabled: true
         routes:
         - id: edge
-            uri: http://edge-service
-            predicates:
-            - Path=/edge/**
+          uri: http://edge-service/
+          predicates:
+          - Path=/edge/**
         - id: ac
-            uri: http://aircraft-service
-            predicates:
-            - Path=/ac/**
+          uri: http://aircraft-service/
+          predicates:
+          - Path=/ac/**
         - id: aircraft
-            uri: http://aircraft-service
-            predicates:
-            - Path=/aircraft
+          uri: http://aircraft-service/
+          predicates:
+          - Path=/aircraft/**
   
