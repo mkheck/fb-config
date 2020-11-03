@@ -16,6 +16,7 @@ spring:
             - Path=/edge/**
           filters:
             - RewritePath=/edge, /
+            - CircuitBreaker=myCircuitBreaker
 
 
 # spring:
