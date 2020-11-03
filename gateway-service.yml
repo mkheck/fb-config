@@ -28,14 +28,14 @@ spring:
         enabled: true
       routes:
       - id: edge
-        uri: http://http://192.168.1.121:8086/
+        uri: lb://edge-service/
         predicates:
         - Path=/edge/**
       - id: ac
-        uri: http://aircraft-service/
+        uri: lb://aircraft-service/
         predicates:
         - Path=/ac/**
       - id: aircraft
-        uri: http://aircraft-service/
+        uri: lb://aircraft-service/
         predicates:
         - Path=/aircraft/**
