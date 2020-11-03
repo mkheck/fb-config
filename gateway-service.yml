@@ -12,20 +12,12 @@ spring:
     gateway:
       routes:
         - id: edge
-          uri: lb://edge-service
+          uri: lb://report-service
           predicates:
-            - Path=/edge/**
+            - Path=/report/**
           filters:
-            - RewritePath=/edge, /
+            - RewritePath=/report, /
 
-# spring:
-#   cloud:
-#     gateway:
-#       routes:
-#       - id: edge
-#         uri: lb://edge-service/
-#         predicates:
-#         - Path=/edge/**
 #       - id: ac
 #         uri: lb://aircraft-service/
 #         predicates:
