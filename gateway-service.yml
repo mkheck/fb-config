@@ -11,7 +11,7 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: edge
+        - id: report
           uri: lb://report-service
           predicates:
             - Path=/report/**
