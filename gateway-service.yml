@@ -28,7 +28,7 @@ server:
             enabled: true
         routes:
         - id: edge
-          uri: http://edge-service/
+          uri: http://http://192.168.1.121:8086/
           predicates:
           - Path=/edge/**
         - id: ac
