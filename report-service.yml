@@ -20,5 +20,9 @@ spring:
     sender:
       type: web
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
 # Misc
 aircraft: "PA28"
